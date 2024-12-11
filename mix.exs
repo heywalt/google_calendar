@@ -2,14 +2,16 @@ defmodule GoogleCalendar.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :google_calendar,
-     version: "0.1.3",
-     elixir: "~> 1.4",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     description: "A simple wrapper for Google Calendar API",
-     package: package(),
-     deps: deps()]
+    [
+      app: :google_calendar,
+      version: "0.1.3",
+      elixir: "~> 1.4",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      description: "A simple wrapper for Google Calendar API",
+      package: package(),
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
@@ -30,13 +32,16 @@ defmodule GoogleCalendar.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:oauth2, "~> 0.9"},
-     {:earmark, ">= 0.0.0", only: :dev},
-     {:ex_doc, ">= 0.0.0", only: :dev}]
+    [
+      {:oauth2, "~> 2.0"},
+      {:earmark, ">= 0.0.0", only: :dev},
+      {:ex_doc, ">= 0.0.0", only: :dev}
+    ]
   end
 
   def package do
-    [ name: :google_calendar,
+    [
+      name: :google_calendar,
       files: ["lib", "mix.exs"],
       maintainers: ["dinhtungtp"],
       licenses: ["Framgia Vietnam"],
